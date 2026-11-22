@@ -1,3 +1,4 @@
+
 # Prompt cards — copy into Copilot Chat (Agent mode)
 
 Rules: one card at a time · test after every answer · **two tries, then ask your helper to reset you**.
@@ -38,7 +39,13 @@ Write your own prompt first, then paste it where it says.
 Connect my form to Gemini.
 1. At the top of app.py, add a variable SYSTEM_PROMPT with exactly this text:
 """
-[PASTE YOUR PROMPT HERE]
+You are a [friendly, honest] career counsellor for [students and job seekers in India].
+Given a person's profile, reply in Markdown with exactly these sections:
+## 3 roles that fit you  — [what to include for each role]
+## Your skill gaps        — [a table with which columns?]
+## Your 90-day roadmap    — [how to split it, how many tasks]
+## One thing to do today  — [how small?]
+Rules: [never promise a job or a salary], [simple English], [under 450 words], [your own rule]
 """
 2. When the form is submitted and nothing is missing, send all the form answers to Gemini
    with SYSTEM_PROMPT, using the Gemini pattern in .github/copilot-instructions.md.
@@ -64,11 +71,7 @@ Rules: [never promise a job or a salary], [simple English], [under 450 words], [
 ```
 Turn my app into a career dashboard. Keep the form, the page style and the footer.
 
-1. Resume: above the form, add an optional PDF upload titled "Step 1 · Resume (optional)", with this
-   small note under it: "Your resume is sent to Google Gemini to make your plan and is not stored by
-   this app. On Gemini's free tier Google may use it to improve its products."
-   If a PDF is uploaded, send it to Gemini together with the form answers (in memory only).
-   When a resume is uploaded, the skills box becomes optional.
+1. 
 
 2. Structured answer: keep the role and the rules of my SYSTEM_PROMPT, but make Gemini return JSON
    using response_mime_type="application/json" and a response_schema with:
@@ -112,4 +115,8 @@ Use at most 5 short bullet points. Don't change any code.
 ```
 After my last change, the app shows this error: [paste the red error text].
 Fix only this error. Don't change anything else.
-```
+```Resume: above the form, add an optional PDF upload titled "Step 1 · Resume (optional)", with this
+   small note under it: "Your resume is sent to Google Gemini to make your plan and is not stored by
+   this app. On Gemini's free tier Google may use it to improve its products."
+   If a PDF is uploaded, send it to Gemini together with the form answers (in memory only).
+   When a resume is uploaded, the skills box becomes optional.
